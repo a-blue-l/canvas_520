@@ -599,6 +599,6 @@ $(function(){
 	})()
 
 	$('.text_05.two_time').click(function(){
-		window.location.href = 'canvasthree.html';
+// 		window.location.href = 'canvasthree.html';
 	})
 })
