@@ -1,6 +1,9 @@
 .px(@name, @px){
 	@{name}: @px / 75rem;
 }
+body{
+	overflow: hidden;
+}
 .loading{
 	width: 100%;
 	height: 100%;
@@ -9,7 +12,7 @@
 	left: 0;
 	z-index: 1;
 	color: #fff;
-	z-index: 99;
+	z-index: 9;
 	.textcenter{
 		.px(width, 200);
 		.px(height, 100);
@@ -148,11 +151,14 @@
 
 
 .code{
-	width:100%;
-	height:100%;
+	.px(width, 750);
+	.px(height, 1200);
 	position: absolute;
 	top:0;
 	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
 	z-index: 9;
 	display: none;
 	box-sizing: border-box;
@@ -166,7 +172,7 @@
 		padding: 0.1rem 0;
 	}
 	.content{
-		.px(font-size, 40);
+		.px(font-size, 50);
 		.px(padding-left, 40);
 		.px(margin-bottom, 0.1rem)
 	}
@@ -182,7 +188,7 @@
 	position: absolute;
 	.px(top, 0);
 	.px(left, 0);
-	z-index: 99;
+	z-index: 999;
 	color:#fff;
 	background: #000;
 	.px(font-size, 50);
@@ -197,8 +203,7 @@
 	position: absolute;
 	.px(top, 0);
 	.px(left, 0);
-	background: #000;
-	z-index: 8;
+	z-index: 99;
 	.kaishi{
 		.px(width, 200);
 		.px(height, 100);

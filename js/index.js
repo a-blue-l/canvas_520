@@ -1,4 +1,5 @@
 $(function(){
+	var dpr = $('html').attr('data-dpr');
 	var THREE_lights;
 	var three_box;
 	var audio = document.getElementById('audio');
@@ -158,8 +159,8 @@ $(function(){
 			particles = new ParticlePool(initDate.length),
 	        particleRate = initDate.length / initDate.duration,
 	        time;
-			canvas.width = canvas.clientWidth;
-			canvas.height = canvas.clientHeight;
+			canvas.width = canvas.clientWidth * (2/dpr);
+			canvas.height = canvas.clientHeight * (2/dpr);
 			
 			// 小心心路径
 			var pointOnHeart = function(t){
@@ -220,10 +221,11 @@ $(function(){
 			window.onload = function(){
 				$('.loadings').hide().remove();
 			}
+
+				$('.contentBox').css({opacity: 1});
 			$('.kaishi').click(function(){
 				audio.play();
 				$('.start').hide().remove();
-				$('.contentBox').css({opacity: 1});
 				$('.loadBox').show();
 				var one_step = setTimeout(function(){
 					clearTimeout(one_step);
@@ -266,7 +268,7 @@ $(function(){
 		}
 		var light; /* 灯光 */
 		function initLight(){
-			var ambientLight = new THREE.AmbientLight(0x663344, 2);
+			var ambientLight = new THREE.AmbientLight(0x663388, 2);
     		scene.add(ambientLight);
 			light = new THREE.DirectionalLight(0xfffffff, 1.0);/* 方向光 */
 			light.position.set(100, 100, 200);
@@ -288,7 +290,7 @@ $(function(){
 			initScene(); //初始化scene
 			initLight(); //初始化light
 			// 创建星球材质模型
-			function getMat(color){
+			function getMat(color, text){
 				return new THREE.MeshStandardMaterial({
 					color: color,
 					roughness: 0.9,
@@ -471,7 +473,6 @@ $(function(){
 
 			Planet.prototype.updateParticlesRotation = function() {
 
-
 			    for (var i = 0; i < this.nParticles; i++) {
 			        var m = this.ring.children[i];
 			        m.userData.angle += m.userData.angularSpeed;
@@ -481,7 +482,6 @@ $(function(){
 			        m.position.x = posX;
 			        m.position.z = posZ;
 
-			        //*
 			        m.rotation.x += Math.random() * .05;
 			        m.rotation.y += Math.random() * .05;
 			        m.rotation.z += Math.random() * .05;
@@ -593,7 +593,6 @@ $(function(){
 			    var tv = tmin + (pc * dt);
 			    return tv;
 			}
-			
 		}
 		THREE_light();
 	})()
